@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Main, About, runtimetypeinfocontrols, tachartlazaruspkg,
+  Forms, Main, About, indylaz, runtimetypeinfocontrols, tachartlazaruspkg,
   printer4lazarus;
 
 {$R *.res}

@@ -715,4 +715,22 @@ object formMain: TformMain
     Left = 328
     Top = 241
   end
+  object IdTCPClient: TIdTCPClient
+    IOHandler = IdIOHandlerStack
+    ConnectTimeout = 0
+    Host = '192.168.0.108'
+    Port = 7
+    ReadTimeout = -1
+    Left = 405
+    Top = 87
+  end
+  object IdIOHandlerStack: TIdIOHandlerStack
+    Destination = '192.168.0.108:7'
+    Host = '192.168.0.108'
+    MaxLineAction = maException
+    Port = 7
+    DefaultPort = 0
+    Left = 457
+    Top = 202
+  end
 end

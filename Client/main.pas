@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  ComCtrls, Menus, About, TAGraph, TASeries, PrintersDlgs, Printers;
+  ComCtrls, Menus, About, TAGraph, TASeries, PrintersDlgs, Printers,
+  IdTCPClient, IdIOHandlerStack, IdIOHandlerStream;
 
 type
 
@@ -14,6 +15,8 @@ type
 
   TformMain = class(TForm)
     btnRandom: TButton;
+    IdIOHandlerStack: TIdIOHandlerStack;
+    IdTCPClient: TIdTCPClient;
     imgSensorScalePressure: TImage;
     labNumber: TLabel;
     labPressure: TLabel;
@@ -35,6 +38,7 @@ type
     procedure miPrintClick(Sender: TObject);
     procedure TimerRandomTimer(Sender: TObject);
     procedure tbPressureChange(Sender: TObject);
+    procedure SendValue(StringValue:String);
   private
 
   public
@@ -111,6 +115,7 @@ begin
         shpSensorScale.Canvas.LineTo(43, 136);
         labNumber.Caption := '0';
         labNumber.Font.Color := clGreen;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     1:
       begin
@@ -119,6 +124,7 @@ begin
         shpSensorScale.Canvas.LineTo(33, 110);
         labNumber.Caption := '20';
         labNumber.Font.Color := clGreen;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     2:
       begin
@@ -127,6 +133,7 @@ begin
         shpSensorScale.Canvas.LineTo(35, 81);
         labNumber.Caption := '40';
         labNumber.Font.Color := clGreen;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     3:
       begin
@@ -135,6 +142,7 @@ begin
         shpSensorScale.Canvas.LineTo(49, 56);
         labNumber.Caption := '60';
         labNumber.Font.Color := clGreen;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     4:
       begin
@@ -143,6 +151,7 @@ begin
         shpSensorScale.Canvas.LineTo(71, 41);
         labNumber.Caption := '80';
         labNumber.Font.Color := clGreen;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     5:
       begin
@@ -151,6 +160,7 @@ begin
         shpSensorScale.Canvas.LineTo(98, 33);
         labNumber.Caption := '100';
         labNumber.Font.Color := clYellow;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     6:
       begin
@@ -159,6 +169,7 @@ begin
         shpSensorScale.Canvas.LineTo(126, 40);
         labNumber.Caption := '120';
         labNumber.Font.Color := clYellow;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     7:
       begin
@@ -167,6 +178,7 @@ begin
         shpSensorScale.Canvas.LineTo(150, 59);
         labNumber.Caption := '140';
         labNumber.Font.Color := clYellow;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     8:
       begin
@@ -176,6 +188,7 @@ begin
         shpSensorScale.Canvas.LineTo(162, 82);
         labNumber.Caption := '160';
         labNumber.Font.Color := clRed;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     9:
       begin
@@ -185,6 +198,7 @@ begin
         shpSensorScale.Canvas.LineTo(163, 111);
         labNumber.Caption := '180';
         labNumber.Font.Color := clRed;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
     10:
       begin
@@ -194,7 +208,18 @@ begin
         shpSensorScale.Canvas.LineTo(151, 137);
         labNumber.Caption := '200';
         labNumber.Font.Color := clRed;
+        SendValue(labNumber.Caption); //Send data through tcp/ip
       end;
+  end;
+end;
+
+procedure TformMain.SendValue(StringValue:String);
+begin
+  IdTCPClient.Connect;
+  try
+   IdTCPClient.Socket.WriteLn('Value: '+StringValue+'  '+'time stamp '+DateTimeToStr(now));
+  finally
+   IdTCPClient.Disconnect;
   end;
 end;
 
