@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  ComCtrls;
+  ComCtrls, Menus, About, TAGraph, TASeries, PrintersDlgs, Printers;
 
 type
 
@@ -17,11 +17,22 @@ type
     imgSensorScalePressure: TImage;
     labNumber: TLabel;
     labPressure: TLabel;
+    MainMenu: TMainMenu;
+    miExit: TMenuItem;
+    miSeparatorFileOne: TMenuItem;
+    miPrint: TMenuItem;
+    miAbout: TMenuItem;
+    miHelp: TMenuItem;
+    miFile: TMenuItem;
+    PrintDialog: TPrintDialog;
     shpSensorScale: TShape;
     TimerRandom: TTimer;
     tbPressure: TTrackBar;
     procedure btnRandomClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure miAboutClick(Sender: TObject);
+    procedure miExitClick(Sender: TObject);
+    procedure miPrintClick(Sender: TObject);
     procedure TimerRandomTimer(Sender: TObject);
     procedure tbPressureChange(Sender: TObject);
   private
@@ -48,6 +59,28 @@ begin
   labPressure.Visible := False;
 end;
 
+procedure TformMain.miAboutClick(Sender: TObject);
+begin
+  formAbout.ShowModal;
+end;
+
+procedure TformMain.miExitClick(Sender: TObject);
+begin
+  Application.Terminate; //Close all form
+end;
+
+procedure TformMain.miPrintClick(Sender: TObject);
+begin
+  if PrintDialog.Execute then
+    Printer.BeginDoc;
+    try
+     Printer.Canvas.StretchDraw(Rect(0, 0, 2000, 2000),imgSensorScalePressure.Picture.Bitmap);
+     // Printer.Canvas.;
+    finally
+      Printer.EndDoc;
+    end;
+end;
+
 procedure TformMain.TimerRandomTimer(Sender: TObject);
 begin
   Randomize;
@@ -56,7 +89,7 @@ end;
 //Программу написал на скорую руку так как под lazarus нету кода. Обычно работаю на Delphi 12.1
 procedure TformMain.tbPressureChange(Sender: TObject);
 begin
-shpSensorScale.Refresh;
+  shpSensorScale.Refresh;
   shpSensorScale.Canvas.Pen.Width := 5;
   shpSensorScale.Canvas.MoveTo(imgSensorScalePressure.ClientWidth div 2, imgSensorScalePressure.ClientHeight div 2);
   case tbPressure.Position of
@@ -158,6 +191,7 @@ procedure TformMain.btnRandomClick(Sender: TObject);
 begin
  TimerRandom.Enabled := True;
 end;
+
 
 end.
 

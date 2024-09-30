@@ -1,11 +1,12 @@
 object formMain: TformMain
-  Left = 368
-  Height = 379
-  Top = 279
-  Width = 618
+  Left = 401
+  Height = 434
+  Top = 299
+  Width = 623
   Caption = 'formMain'
-  ClientHeight = 379
-  ClientWidth = 618
+  ClientHeight = 434
+  ClientWidth = 623
+  Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '3.4.0.0'
   object imgSensorScalePressure: TImage
@@ -641,8 +642,8 @@ object formMain: TformMain
   object labPressure: TLabel
     Left = 0
     Height = 75
-    Top = 304
-    Width = 618
+    Top = 359
+    Width = 623
     Align = alBottom
     Caption = 'Высокое давление'
     Font.CharSet = RUSSIAN_CHARSET
@@ -657,7 +658,7 @@ object formMain: TformMain
   object labNumber: TLabel
     Left = 208
     Height = 75
-    Top = 0
+    Top = -8
     Width = 36
     Caption = '0'
     Font.CharSet = RUSSIAN_CHARSET
@@ -683,5 +684,35 @@ object formMain: TformMain
     OnTimer = TimerRandomTimer
     Left = 168
     Top = 240
+  end
+  object MainMenu: TMainMenu
+    Left = 240
+    Top = 240
+    object miFile: TMenuItem
+      Caption = '&File'
+      object miPrint: TMenuItem
+        Caption = 'Print'
+        OnClick = miPrintClick
+      end
+      object miSeparatorFileOne: TMenuItem
+        Caption = '-'
+      end
+      object miExit: TMenuItem
+        Caption = 'Exit'
+        ShortCut = 16465
+        OnClick = miExitClick
+      end
+    end
+    object miHelp: TMenuItem
+      Caption = 'Help'
+      object miAbout: TMenuItem
+        Caption = 'About'
+        OnClick = miAboutClick
+      end
+    end
+  end
+  object PrintDialog: TPrintDialog
+    Left = 328
+    Top = 241
   end
 end

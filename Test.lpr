@@ -10,8 +10,8 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Main
-  { you can add units after this };
+  Forms, Main, About, runtimetypeinfocontrols, tachartlazaruspkg,
+  printer4lazarus;
 
 {$R *.res}
 
@@ -20,6 +20,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TformMain, formMain);
+  Application.CreateForm(TformAbout, formAbout);
   Application.Run;
 end.
 
