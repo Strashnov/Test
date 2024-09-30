@@ -1,0 +1,61 @@
+object Form1: TForm1
+  Left = 375
+  Height = 443
+  Top = 145
+  Width = 583
+  Caption = 'Form1'
+  ClientHeight = 443
+  ClientWidth = 583
+  OnCreate = FormCreate
+  LCLVersion = '3.4.0.0'
+  object Edit1: TEdit
+    Left = 27
+    Height = 23
+    Top = 40
+    Width = 216
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object Button1: TButton
+    Left = 388
+    Height = 25
+    Top = 47
+    Width = 75
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 58
+    Height = 186
+    Top = 158
+    Width = 230
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 2
+  end
+  object IdIPWatch1: TIdIPWatch
+    Active = True
+    HistoryFilename = 'iphist.dat'
+    Left = 346
+    Top = 113
+  end
+  object IdTCPServer1: TIdTCPServer
+    Active = True
+    Bindings = <    
+      item
+        IP = '192.168.0.108'
+        Port = 7
+      end>
+    DefaultPort = 0
+    IOHandler = IdServerIOHandlerStack1
+    OnExecute = IdTCPServer1Execute
+    Left = 337
+    Top = 233
+  end
+  object IdServerIOHandlerStack1: TIdServerIOHandlerStack
+    Left = 391
+    Top = 322
+  end
+end

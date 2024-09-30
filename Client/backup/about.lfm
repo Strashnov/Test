@@ -1,0 +1,9 @@
+object formAbout: TformAbout
+  Left = 385
+  Height = 240
+  Top = 145
+  Width = 320
+  BorderIcons = [biSystemMenu]
+  Caption = 'About'
+  LCLVersion = '3.4.0.0'
+end
