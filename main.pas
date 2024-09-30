@@ -70,12 +70,23 @@ begin
 end;
 
 procedure TformMain.miPrintClick(Sender: TObject);
+var BufferCombiningShapeImage:TImage;
 begin
   if PrintDialog.Execute then
     Printer.BeginDoc;
     try
-     Printer.Canvas.StretchDraw(Rect(0, 0, 2000, 2000),imgSensorScalePressure.Picture.Bitmap);
-     // Printer.Canvas.;
+     BufferCombiningShapeImage:=TImage.Create(self);
+     BufferCombiningShapeImage.Stretch:=True;
+     BufferCombiningShapeImage.Height:=200;
+     BufferCombiningShapeImage.Width:=200;
+     try
+      BufferCombiningShapeImage.Canvas.CopyRect(shpSensorScale.ClientRect,
+       imgSensorScalePressure.Canvas, Rect(0,0,200,200));
+      Printer.Canvas.StretchDraw(Rect(0, 0, 2000, 2000),
+       BufferCombiningShapeImage.Picture.Bitmap);
+     finally
+       BufferCombiningShapeImage.Free;
+     end;
     finally
       Printer.EndDoc;
     end;
@@ -191,6 +202,7 @@ procedure TformMain.btnRandomClick(Sender: TObject);
 begin
  TimerRandom.Enabled := True;
 end;
+
 
 
 end.
