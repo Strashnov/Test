@@ -1,11 +1,11 @@
 object formMain: TformMain
-  Left = 401
+  Left = 474
   Height = 434
-  Top = 299
-  Width = 623
+  Top = 329
+  Width = 622
   Caption = 'formMain'
   ClientHeight = 434
-  ClientWidth = 623
+  ClientWidth = 622
   Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '3.4.0.0'
@@ -643,7 +643,7 @@ object formMain: TformMain
     Left = 0
     Height = 75
     Top = 359
-    Width = 623
+    Width = 622
     Align = alBottom
     Caption = 'Высокое давление'
     Font.CharSet = RUSSIAN_CHARSET
@@ -678,6 +678,20 @@ object formMain: TformMain
     Brush.Color = clNone
     Brush.Style = bsClear
     Pen.Color = clNone
+  end
+  object Button1: TButton
+    Left = 448
+    Height = 25
+    Top = 33
+    Width = 75
+    Caption = 'Button1'
+    TabOrder = 2
+  end
+  object Image1: TImage
+    Left = 390
+    Height = 200
+    Top = 101
+    Width = 200
   end
   object TimerRandom: TTimer
     Enabled = False
@@ -714,5 +728,9 @@ object formMain: TformMain
   object PrintDialog: TPrintDialog
     Left = 328
     Top = 241
+  end
+  object PageSetupDialog: TPageSetupDialog
+    Left = 328
+    Top = 184
   end
 end

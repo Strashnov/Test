@@ -1,11 +1,11 @@
 object formMain: TformMain
-  Left = 401
+  Left = 474
   Height = 434
-  Top = 299
-  Width = 623
+  Top = 329
+  Width = 622
   Caption = 'formMain'
   ClientHeight = 434
-  ClientWidth = 623
+  ClientWidth = 622
   Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '3.4.0.0'
@@ -643,7 +643,7 @@ object formMain: TformMain
     Left = 0
     Height = 75
     Top = 359
-    Width = 623
+    Width = 622
     Align = alBottom
     Caption = 'Высокое давление'
     Font.CharSet = RUSSIAN_CHARSET
