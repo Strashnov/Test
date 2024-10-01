@@ -6,8 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, IdIPWatch,
-  IdSSLOpenSSL, IdTCPServer, IdCustomTCPServer, IdContext, IdIntercept,
-  IdInterceptThrottler, IdIOHandlerStream, IdServerIOHandlerStack;
+  IdSSLOpenSSL, IdServerInterceptLogFile, IdTCPServer, IdCustomTCPServer,
+  IdContext, IdIntercept, IdInterceptThrottler, IdIOHandlerStream,
+  IdServerIOHandlerStack;
 
 type
 
@@ -15,6 +16,7 @@ type
 
   TForm1 = class(TForm)
     IdIPWatch: TIdIPWatch;
+    IdServerInterceptLogFile1: TIdServerInterceptLogFile;
     IdServerIOHandlerStack: TIdServerIOHandlerStack;
     IdTCPServer: TIdTCPServer;
     Memo: TMemo;
