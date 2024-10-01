@@ -1,3 +1,3 @@
 create table data_test(
-    data_client varchar(3)
+    data_client varchar(5)
  );

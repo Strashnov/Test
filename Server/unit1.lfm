@@ -68,6 +68,7 @@ object Form1: TForm1
         Precision = -1
         Size = 3
       end>
+    Active = True
     Database = IBConnection
     Transaction = SQLTransaction
     SQL.Strings = (
@@ -80,14 +81,14 @@ object Form1: TForm1
     Top = 218
   end
   object SQLTransaction: TSQLTransaction
-    Active = False
+    Active = True
     Action = caCommit
     Database = IBConnection
     Left = 440
     Top = 218
   end
   object IBConnection: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = True
     DatabaseName = 'C:\Test\Database\TEST.FDB'
     KeepConnection = False

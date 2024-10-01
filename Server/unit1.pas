@@ -47,12 +47,10 @@ procedure TForm1.IdTCPServerExecute(AContext: TIdContext);
 begin
   MessageFromClient:=AContext.Connection.Socket.ReadLn();
   Memo.Lines.Add('Value: '+MessageFromClient+'  '+'time stamp '+DateTimeToStr(now));
-  SQLQuery.Open;
-  SQLQuery.Insert;
+  SQLQuery.Append;
   SQLQuery.FieldByName('data_client').AsString:=MessageFromClient;
   SQLQuery.Post;
-  //SQLQuery.ApplyUpdates;
-  SQLQuery.;
+  SQLQuery.ApplyUpdates;
   AContext.Connection.Disconnect;
 end;
 
