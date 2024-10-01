@@ -217,7 +217,7 @@ procedure TformMain.SendValue(StringValue:String);
 begin
   IdTCPClient.Connect;
   try
-   IdTCPClient.Socket.WriteLn('Value: '+StringValue+'  '+'time stamp '+DateTimeToStr(now));
+   IdTCPClient.Socket.WriteLn(StringValue);
   finally
    IdTCPClient.Disconnect;
   end;

@@ -5,26 +5,31 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, IdIPWatch,
-  IdSSLOpenSSL, IdServerInterceptLogFile, IdTCPServer, IdCustomTCPServer,
-  IdContext, IdIntercept, IdInterceptThrottler, IdIOHandlerStream,
-  IdServerIOHandlerStack;
+  Classes, SysUtils, SQLDB, SQLDBLib, DB, IBConnection, Forms, Controls,
+  Graphics, Dialogs, StdCtrls, DBGrids, IdIPWatch, IdSSLOpenSSL,
+  IdServerInterceptLogFile, IdTCPServer, IdCustomTCPServer, IdContext,
+  IdIntercept, IdInterceptThrottler, IdIOHandlerStream, IdServerIOHandlerStack;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
+    DataSource: TDataSource;
+    DBGrid1: TDBGrid;
+    IBConnection: TIBConnection;
     IdIPWatch: TIdIPWatch;
     IdServerInterceptLogFile1: TIdServerInterceptLogFile;
     IdServerIOHandlerStack: TIdServerIOHandlerStack;
     IdTCPServer: TIdTCPServer;
     Memo: TMemo;
-    procedure Button1Click(Sender: TObject);
+    SQLDBLibraryLoader: TSQLDBLibraryLoader;
+    SQLQuery: TSQLQuery;
+    SQLTransaction: TSQLTransaction;
     procedure FormCreate(Sender: TObject);
     procedure IdTCPServerExecute(AContext: TIdContext);
   private
-
+    MessageFromClient:String;
   public
 
   end;
@@ -40,13 +45,15 @@ implementation
 
 procedure TForm1.IdTCPServerExecute(AContext: TIdContext);
 begin
-  Memo.Lines.Add(AContext.Connection.Socket.ReadLn());
+  MessageFromClient:=AContext.Connection.Socket.ReadLn();
+  Memo.Lines.Add('Value: '+MessageFromClient+'  '+'time stamp '+DateTimeToStr(now));
+  SQLQuery.Open;
+  SQLQuery.Insert;
+  SQLQuery.FieldByName('data_client').AsString:=MessageFromClient;
+  SQLQuery.Post;
+  //SQLQuery.ApplyUpdates;
+  SQLQuery.;
   AContext.Connection.Disconnect;
-end;
-
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

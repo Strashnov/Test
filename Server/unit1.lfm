@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 385
+  Left = 700
   Height = 443
-  Top = 144
+  Top = 152
   Width = 583
   Caption = 'Form1'
   ClientHeight = 443
@@ -10,11 +10,24 @@ object Form1: TForm1
   LCLVersion = '3.4.0.0'
   object Memo: TMemo
     Left = 0
-    Height = 443
+    Height = 232
     Top = 0
     Width = 583
     Align = alClient
     TabOrder = 0
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 211
+    Top = 232
+    Width = 583
+    Align = alBottom
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    TabOrder = 1
   end
   object IdIPWatch: TIdIPWatch
     Active = True
@@ -44,5 +57,60 @@ object Form1: TForm1
     Filename = 'Log.txt'
     Left = 356
     Top = 131
+  end
+  object SQLQuery: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'DATA_CLIENT'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    Database = IBConnection
+    Transaction = SQLTransaction
+    SQL.Strings = (
+      'select *'
+      'from data_test;'
+    )
+    Params = <>
+    Macros = <>
+    Left = 321
+    Top = 218
+  end
+  object SQLTransaction: TSQLTransaction
+    Active = False
+    Action = caCommit
+    Database = IBConnection
+    Left = 440
+    Top = 218
+  end
+  object IBConnection: TIBConnection
+    Connected = False
+    LoginPrompt = True
+    DatabaseName = 'C:\Test\Database\TEST.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction
+    UserName = 'SYSDBA'
+    CharSet = 'utf-8'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    UseConnectionCharSetIfNone = False
+    Left = 331
+    Top = 281
+  end
+  object SQLDBLibraryLoader: TSQLDBLibraryLoader
+    Enabled = True
+    ConnectionType = 'Firebird'
+    LibraryName = 'fbclient.dll'
+    Left = 448
+    Top = 281
+  end
+  object DataSource: TDataSource
+    DataSet = SQLQuery
+    Left = 332
+    Top = 341
   end
 end

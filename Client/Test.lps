@@ -7,10 +7,9 @@
       <Unit>
         <Filename Value="Test.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="67" Y="18"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="30"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -20,12 +19,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="200"/>
-        <CursorPos X="70" Y="220"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <CursorPos X="42" Y="220"/>
+        <UsageCount Value="30"/>
       </Unit>
       <Unit>
         <Filename Value="about.pas"/>
@@ -35,7 +32,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="About"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="26"/>
       </Unit>
       <Unit>
         <Filename Value="../lazarus/lcl/include/control.inc"/>
@@ -94,32 +91,31 @@
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="Test.lpi"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit>
       <Unit>
         <Filename Value="../Server/project1.lpi"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit>
       <Unit>
         <Filename Value="../Server/project1.lpr"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
       </Unit>
       <Unit>
         <Filename Value="../Server/unit1.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -130,11 +126,14 @@
         <UnitName Value="Unit1"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <TopLine Value="22"/>
-        <CursorPos X="3" Y="52"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="30"/>
+        <CursorPos X="5" Y="56"/>
+        <UsageCount Value="11"/>
       </Unit>
     </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
     <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
